@@ -21,11 +21,11 @@
                     "lxc": "Contêiners Linux (LXC)",
                     "storage": "Armazenamentos",
                     "disks_enable": "Habilitar informações dos discos físicos",
-                    "auto_discovery": "Track everything automatically"
+                    "auto_discovery": "Monitore tudo automaticamente"
                 },
                 "data_description": {
                     "disks_enable": "Se você trabalha com a hibernação dos discos, você deverá desabilitar esta opção da integração para que não cause a reativação dos discos indevidamente.",
-                    "auto_discovery": "Monitore automaticamente todos os nós, máquinas virtuais, contêineres e recursos de armazenamento acessíveis com as credenciais e acompanhe o cluster a partir desse momento: tudo o que for adicionado será incluído e tudo o qu for removido será descartado. A seleção acima é ignorada enquanto essa opção estiver ativa. Os templates nunca são monitorados."
+                    "auto_discovery": "Monitore todos os nós, máquinas virtuais, contêineres e recursos de armazemanto acessíveis com as credenciais e acompanhe o cluster a partir desse momento: tudo o que for adicionado será incluído e tudo o que for removido será descartado. A seleção acima é ignorada enquanto essa opção estiver ativa. Templates nunca são monitorados."
                 }
             },
             "reauth_confirm": {
@@ -104,24 +104,24 @@
             "description": "A configuração YAML da integração {integration} (`{platform}`) foi descontinuada e será removida na versão {version}. Resolva os problemas de importação e remova a configuração YAML do arquivo `configuration.yaml`."
         },
         "resources_nonexistent": {
-            "description": "These resources are tracked, but the cluster at `{host}:{port}` does not list them. Remove them in the integration options - or, if they do exist, user `{user}` may lack the privilege to see them, noted after each one:\n\n{items}",
-            "title": "{count} tracked resource(s) not found on {host}"
+            "description": "Estes recursos são rastreados mas o cluster em `{host}:{port}` não os lista. Remova-os nas opções de integração ou, caso existam, o usuário `{user}` pode não ter permissão para visualizá-los (indicado após cada item):\n\n{items}",
+            "title": "{count} recurso(s) não encontrado(s) em {host}"
         },
         "no_permissions": {
             "description": "O usuário `{user}` não possui as permissões necessárias para todos os recursos.\n\nOs seguintes recursos não são acessíveis pelo usuário:\n`{errors}`\n\nVerifique as permissões do usuário conforme descrito na documentação.",
             "title": "O usuário `{user}` não possui as permissões necessárias"
         },
         "resources_forbidden": {
-            "description": "User `{user}` may not read these resources. Grant the privilege noted after each one, on the path shown or one above it, and reload the integration:\n\n{items}\n\nThe permissions documentation lists the roles the integration needs.",
-            "title": "{count} resource(s) not readable by `{user}`"
+            "description": "Usuário `{user}` não tem permisão para ler estes recursos. Conceda o privilégio indicado após cada um deles - no caminho mostrado ou em um nível superior - e recarregue a integração:\n\n{items}\n\nA documentação de permissões lista as funções (roles) que a integração necessita.",
+            "title": "{count} recurso(s) não legível(is) pelo usuário `{user}`"
         },
         "guest_agent_fsinfo_forbidden": {
-            "description": "User `{user}` may not query the QEMU guest agent of these VMs: {vms}.\n\nTheir disk usage falls back to what the host sees - for most VMs that is nothing. Reading it needs, on the VMs or on a path above them:\n* `{permission}`\n\nOn Proxmox VE 8 the privilege is `VM.Monitor` instead. The built-in `PVEAuditor` role carries it. Grant it and reload the integration.",
-            "title": "Guest agent not readable"
+            "description": "O usuário `{user}` não tem permissão para consultar o agente convidado (guest agent) do QEMU destas VMs: {vms}.\n\nO uso de disco delas passa a ser reportado com base no que o host enxerga - para a maioria das VMs isso significa nenhum dado. A leitura requer, nas VMs ou ou em um caminho hierarquicamente superior a elas:\n* `{permission}`\n\nNo Proxmox VE 8 o privilégio utilizado é `VM.Monitor`. A função (role) integrada `PVEAuditor` inclui esse privilégio. Conceda-o e reinicia a integração.",
+            "title": "Agente convidado (guest agent) inacessível"
         },
         "guest_agent_file_forbidden": {
-            "description": "User `{user}` may not read files through the QEMU guest agent of these VMs: {vms}.\n\nTheir guest file sensor cannot be created. Reading it needs, on the VMs or on a path above them:\n* `{permission}`\n\nOn Proxmox VE 8 the privilege is `VM.Monitor` instead. Grant it and reload the integration, or clear the file path in the integration options.",
-            "title": "Guest file not readable"
+            "description": "O usuário `{user}` não pode ler arquivos através do agente convidado (guest agent) do QEMU destas VMs: {vms}.\n\nO sensor de arquivos convidado não pode ser criado. A leitura requer, nas VMs ou em um caminho acima delas:\n* `{permission}`\n\nNo Proxmox VE 8 o privilégio é `VM.Monitor`. Conceda-o e recarregue a integração ou limpe o caminho do arquivo nas opções de integração.",
+            "title": "Arquivo convidado ilegível"
         },
         "resource_command_forbiden": {
             "description": "O usuário `{user}` não tem permissões suficientes para executar o comando `{command}` no recurso `{resource}`.\n\nDica sobre as permissões necessárias:\n* `{permission}`\n\nPor favor, verifique a documentação e as permissões do usuário.",
@@ -148,16 +148,16 @@
                 "description": "Informações do host Proxmox"
             },
             "cluster_ha_auth": {
-                "description": "Optional and separate from the main credentials above. Enables the Arm HA / Disarm HA buttons and a per-VM/CT \"HA managed\" sensor. These require Sys.Console and Sys.Audit permissions on the Proxmox root path ('/') — significantly broader than anything else this integration needs, and enough to affect the whole cluster's HA fencing behavior. Only fill this in if you understand and accept that risk; leave every field empty to leave these features disabled.",
+                "description": "Opcional e independente das credenciais principais mencionadas acima. Habilita os botões "Arm HA / Disarm HA" e um sensor de \"HA managed\" para cada VM/CT. Esses recursos exigem as permissões Sys.Console e Sys.Audit no caminho raiz ('/') do Proxmox — permissões significativamente mais amplas do que qualquer outra exigida por essa integrasção e suficientes para afetar o comportamento de fencing de HA de todo o cluster. Preencha estes campos apenas se compreender e aceitar esse risco. Deixe todos os campos em branco para manter esses recursos desativados.",
                 "data": {
-                    "ha_admin_username": "Username",
-                    "ha_admin_token_name": "Token name",
-                    "ha_admin_password": "Password or token value",
+                    "ha_admin_username": "Nome de Usuário",
+                    "ha_admin_token_name": "Nome do token",
+                    "ha_admin_password": "Senha ou Token",
                     "ha_admin_realm": "Realm"
                 },
                 "data_description": {
-                    "ha_admin_username": "Leave empty (along with the fields below) to disable the Arm/Disarm HA buttons and the HA managed sensor.",
-                    "ha_admin_password": "Needs Sys.Console (arm/disarm) and Sys.Audit (HA resource list) on '/' — not the scoped permissions recommended for the main integration user."
+                    "ha_admin_username": "Deixe em branco (juntamente com os campos abaixo) para desativar os botões de "Arm HA / Disarm HA" e o sensor gerenciado pelo HA.",
+                    "ha_admin_password": "Requer Sys.Console (arm/disarm) e Sys.Audit (HA resource list) na raiz ('/') — e não as permissões com escopo restrito recomendadas para o usuário principal da integração.."
                 }
             },
             "change_expose": {
@@ -167,10 +167,10 @@
                     "nodes": "Nós",
                     "qemu": "Maquinas Virtuais (QEMU)",
                     "storage": "Armazenamentos",
-                    "auto_discovery": "Track everything automatically"
+                    "auto_discovery": "Monitorar tudo automaticamente"
                 },
                 "data_description": {
-                    "auto_discovery": "Track every node, virtual machine, container and storage the credentials can see, and follow the cluster from then on: whatever is added is picked up, whatever is removed is dropped. The selection above is ignored while this is on. Templates are never tracked."
+                    "auto_discovery": "Monitore todos os nós, máquinas virtuais, contêineres e recursos de armazemanto acessíveis com as credenciais e acompanhe o cluster a partir desse momento: tudo o que for adicionado será incluído e tudo o que for removido será descartado. A seleção acima é ignorada enquanto essa opção estiver ativa. Templates nunca são monitorados."
                 }
             },
             "advanced": {
