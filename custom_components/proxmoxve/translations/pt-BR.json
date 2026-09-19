@@ -25,7 +25,7 @@
                 },
                 "data_description": {
                     "disks_enable": "Se você trabalha com a hibernação dos discos, você deverá desabilitar esta opção da integração para que não cause a reativação dos discos indevidamente.",
-                    "auto_discovery": "Track every node, virtual machine, container and storage the credentials can see, and follow the cluster from then on: whatever is added is picked up, whatever is removed is dropped. The selection above is ignored while this is on. Templates are never tracked."
+                    "auto_discovery": "Monitore automaticamente todos os nós, máquinas virtuais, contêineres e recursos de armazenamento acessíveis com as credenciais e acompanhe o cluster a partir desse momento: tudo o que for adicionado será incluído e tudo o qu for removido será descartado. A seleção acima é ignorada enquanto essa opção estiver ativa. Os templates nunca são monitorados."
                 }
             },
             "reauth_confirm": {
